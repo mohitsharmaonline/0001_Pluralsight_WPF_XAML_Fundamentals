@@ -7,14 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <!--you can notice that OK ext is there in the
-        body of the button, rather than as an attribute.
-        Button just don't have to contain plain text. Button
-        supports something known as the content model. lot's 
-        of things in WPF supports this. and basically it says
-        there are various things that can go inside. There
-        are various different things that can form the content.
-        -->
+        
         <!--Putting an Ok along with ellipse will
         give an error that says, that property
         named Content can only be filled once.
@@ -27,11 +20,19 @@
         another element. We will use something that knows
         how to layout multiple children. so i wil put stackpanel
         inside it and have it contain two children.-->
-        <Button Width="75" Height="23">
-            <Ellipse Fill="Yellow" 
+        <Button HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <StackPanel>
+                <Ellipse Fill="Yellow" 
                      Width="40"
                      Height="15"/>
-            OK
+                <TextBlock FontSize="24">
+                    oh <Italic>yeah</Italic> baby!
+                </TextBlock>
+                <Ellipse Fill="Yellow" 
+                     Width="40"
+                     Height="15"/>
+            </StackPanel>
         </Button>
     </Grid>
 </Window>
