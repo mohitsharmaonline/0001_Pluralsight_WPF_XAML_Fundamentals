@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <!--you can notice that OK ext is there in the
+        body of the button, rather than as an attribute.
+        Button just don't have to contain plain text. Button
+        supports something known as the content model. lot's 
+        of things in WPF supports this. and basically it says
+        there are various things that can go inside. There
+        are various different things that can form the content.
+        -->
+        <Button Width="75" Height="23">
+            OK
+        </Button>
     </Grid>
 </Window>
