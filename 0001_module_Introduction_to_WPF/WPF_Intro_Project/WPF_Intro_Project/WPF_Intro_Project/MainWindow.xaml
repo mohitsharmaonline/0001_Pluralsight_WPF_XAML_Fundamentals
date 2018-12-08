@@ -15,10 +15,23 @@
         there are various things that can go inside. There
         are various different things that can form the content.
         -->
+        <!--Putting an Ok along with ellipse will
+        give an error that says, that property
+        named Content can only be filled once.
+        That seems kind of limiting to start with, but
+        composition comes to the resue once again.
+        The reason button only supports one child is 
+        so that it doesn't have to be in charge of how
+        the children are laid out. to handle layout inside
+        the button, we will use Compose, we will use one 
+        another element. We will use something that knows
+        how to layout multiple children. so i wil put stackpanel
+        inside it and have it contain two children.-->
         <Button Width="75" Height="23">
             <Ellipse Fill="Yellow" 
                      Width="40"
                      Height="15"/>
+            OK
         </Button>
     </Grid>
 </Window>
