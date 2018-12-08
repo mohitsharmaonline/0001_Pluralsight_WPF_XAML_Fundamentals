@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfButtonSample"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button
+    <Grid Name="MainGrid">
+        <!--<Button
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             x:Name="MyButton"
@@ -15,6 +15,6 @@
             FontFamily="Candara"
             Foreground="DarkRed">
             _Click me!
-        </Button>
+        </Button>-->
     </Grid>
 </Window>
