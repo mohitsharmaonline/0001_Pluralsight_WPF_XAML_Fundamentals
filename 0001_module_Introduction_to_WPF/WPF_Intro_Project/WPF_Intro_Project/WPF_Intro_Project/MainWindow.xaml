@@ -16,7 +16,9 @@
         are various different things that can form the content.
         -->
         <Button Width="75" Height="23">
-            OK
+            <Ellipse Fill="Yellow" 
+                     Width="40"
+                     Height="15"/>
         </Button>
     </Grid>
 </Window>
