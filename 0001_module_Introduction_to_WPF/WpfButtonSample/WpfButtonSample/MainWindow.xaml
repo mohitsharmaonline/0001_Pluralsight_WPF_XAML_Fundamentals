@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            x:Name="MyButton"
+            FontSize="24"
+            FontFamily="Candara"
+            Foreground="DarkRed">
+            _Click me!
+        </Button>
     </Grid>
 </Window>
