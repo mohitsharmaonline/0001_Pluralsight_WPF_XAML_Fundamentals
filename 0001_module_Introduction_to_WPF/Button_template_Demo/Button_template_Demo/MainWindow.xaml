@@ -59,14 +59,13 @@
                         <Rectangle Fill="{TemplateBinding Background}"
                                    RadiusX="5"
                                    RadiusY="5"/>
-                        <ContentPresenter 
+                        <ContentPresenter
+                            RecognizesAccessKey="True"
                             Content="{TemplateBinding Content}"/>
                     </Grid>
                 </ControlTemplate>
             </Button.Template>
-            <Ellipse Fill="Red" 
-                     Width="60" 
-                     Height="14"/>
+            _Click me
         </Button>
     </Grid>
 </Window>
