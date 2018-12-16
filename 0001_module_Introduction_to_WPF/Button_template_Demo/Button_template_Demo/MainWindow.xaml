@@ -59,7 +59,8 @@
                         <Rectangle Fill="{TemplateBinding Background}"
                                    RadiusX="5"
                                    RadiusY="5"/>
-                        <TextBlock Text="{TemplateBinding Content}"/>
+                        <ContentPresenter 
+                            Content="{TemplateBinding Content}"/>
                     </Grid>
                 </ControlTemplate>
             </Button.Template>
