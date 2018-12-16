@@ -51,7 +51,10 @@
                 themselves. -->
                 <ControlTemplate 
                     TargetType="Button">
-                    <Rectangle Fill="Blue"
+                    <!-- Instead what we want to do is tell WPF that this property here, this fill property of the rectangle, is going to reflect the value of the button's background.
+                    And we do this using a special syntax, looks like this. I say template binding followed by the name of the property, and now, the fill of the rectangle is reflecting
+                    the chosen background color of the property up here.-->
+                    <Rectangle Fill="{TemplateBinding Background}"
                                RadiusX="5"
                                RadiusY="5"/>
                 </ControlTemplate>
