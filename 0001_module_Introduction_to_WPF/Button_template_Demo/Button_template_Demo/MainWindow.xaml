@@ -7,7 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Width="75" Height="24">
+        <!-- What I really want is the 
+        background of my button to reflect one 
+        of the background colors has been chosen
+        up here when the user created the 
+        control because there is a standard 
+        property called background. If I set 
+        this you can see nothing is happening, 
+        so this hard coding of colors isn't 
+        really the right way to go. -->
+        <Button Width="75" Height="24" 
+                Background="Green">
             <!--Property Element Syntax: So if
             I create an element 
             with a dot in the name like this,
@@ -40,7 +50,10 @@
                 externally to the controls
                 themselves. -->
                 <ControlTemplate 
-                    TargetType="Button">                    
+                    TargetType="Button">
+                    <Rectangle Fill="Blue"
+                               RadiusX="5"
+                               RadiusY="5"/>
                 </ControlTemplate>
             </Button.Template>
             _Click me!
