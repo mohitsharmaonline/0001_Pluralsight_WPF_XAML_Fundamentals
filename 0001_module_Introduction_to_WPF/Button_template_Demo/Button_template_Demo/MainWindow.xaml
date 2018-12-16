@@ -63,7 +63,9 @@
                     </Grid>
                 </ControlTemplate>
             </Button.Template>
-            _Click me!
+            <Ellipse Fill="Red" 
+                     Width="60" 
+                     Height="14"/>
         </Button>
     </Grid>
 </Window>
