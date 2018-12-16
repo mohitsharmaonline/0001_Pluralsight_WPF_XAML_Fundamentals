@@ -61,7 +61,9 @@
                                    RadiusY="5"/>
                         <ContentPresenter
                             RecognizesAccessKey="True"
-                            Content="{TemplateBinding Content}"/>
+                            Content="{TemplateBinding Content}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Grid>
                 </ControlTemplate>
             </Button.Template>
