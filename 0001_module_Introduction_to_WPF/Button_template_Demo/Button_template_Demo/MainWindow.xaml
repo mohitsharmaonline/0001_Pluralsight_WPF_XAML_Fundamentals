@@ -7,6 +7,43 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button Width="75" Height="24">
+            <!--Property Element Syntax: So if
+            I create an element 
+            with a dot in the name like this,
+            XAML interprets the bit before the
+            dot as a class name and then the 
+            part after the dot as a property
+            name. So I'm telling XAML I'd like 
+            to set the button's template 
+            property here. So it won't
+            interpret this as being normal 
+            content of the button it will 
+            understand that what goes inside
+            of here is actually a value for the 
+            property. And now, I can put any
+            object I like in here as the XAML, 
+            or at least that's what the XAML
+            syntax means. This particular 
+            property needs to be a particular 
+            type which is control template.-->
+            <Button.Template>
+                <!--Now control templates need
+                to be told what their target 
+                type is, so this needs to know 
+                that it's the template for a 
+                button. This may seem slightly 
+                odd because you might think it 
+                could work it out from the
+                context, however, normally 
+                control templates are defined 
+                externally to the controls
+                themselves. -->
+                <ControlTemplate 
+                    TargetType="Button">                    
+                </ControlTemplate>
+            </Button.Template>
+            _Click me!
+        </Button>
     </Grid>
 </Window>
