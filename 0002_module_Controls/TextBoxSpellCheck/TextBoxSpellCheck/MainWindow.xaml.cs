@@ -24,7 +24,9 @@ namespace TextBoxSpellCheck
         {
             InitializeComponent();
 
-            myTextBox.SpellCheck.IsEnabled = true;
+            //myTextBox.SpellCheck.IsEnabled = true;
+
+            SpellCheck.SetIsEnabled(textBoxBase: myTextBox, value: true);
         }
     }
 }
