@@ -10,17 +10,17 @@
         <StackPanel Orientation="Horizontal">
             <GroupBox Header="Left" Margin="10">
                 <StackPanel>
-                    <RadioButton Content="Small"/>
-                    <RadioButton Content="Medium"/>
-                    <RadioButton Content="large" IsChecked="True"/>
+                    <RadioButton Content="Small" GroupName="myButton"/>
+                    <RadioButton Content="Medium" GroupName="myButton"/>
+                    <RadioButton Content="large" IsChecked="True" GroupName="myButton"/>
                 </StackPanel>
             </GroupBox>
 
             <GroupBox Header="Right" Margin="10">
                 <StackPanel>
-                    <RadioButton Content="this"/>
-                    <RadioButton Content="That" IsChecked="True"/>
-                    <RadioButton Content="The Other"/>
+                    <RadioButton Content="this" GroupName="myButton"/>
+                    <RadioButton Content="That" GroupName="myButton"/>
+                    <RadioButton Content="The Other" GroupName="myButton"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
