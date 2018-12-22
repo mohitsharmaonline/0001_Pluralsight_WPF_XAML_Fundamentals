@@ -42,6 +42,7 @@ namespace EventRoutingExample
         private void MouseDownHandler(object sender, MouseButtonEventArgs e)
         {
             Debug.WriteLine($"MouseDown: {sender}");
+            e.Handled = true;
         }
 
         private void MouseEnterHandler(object sender, MouseEventArgs e)

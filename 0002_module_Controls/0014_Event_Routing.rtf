@@ -1,4 +1,5 @@
-{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}{\f2\fnil\fcharset0 Consolas;}}
+{\colortbl ;\red0\green0\blue0;}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl240\slmult1\lang9\f0\fs22{\pict\wmetafile8\picw14340\pich9022\picwgoal8130\pichgoal5115 
 0100090000037e3c04000000683c04000000050000000b0200000000050000000c023e23043868
 3c0400430f2000cc00000055011e02000000003e23043800000000280000001e02000055010000
@@ -24383,6 +24384,37 @@ public partial class MainWindow : Window\par
 And I'm printing out debug messages each time those events are fired. And notice I'm just using ordinary C Sharp event handling syntax to attach the handlers. You can also hook up handlers in XAML by the way. You can add an attribute such as a mouse enter or mouse down. And the value of that attribute should just be the handler method's name. I'm not a huge fan of that because it increases the coupling between the XAML and the code. If you just look up the handlers and code like I've done here, the code makes assumptions about the structure of the XAML, but the XAML makes no assumptions about the code. But as soon as I start putting method names into my XAML, I've got assumptions going in both directions. And, moreover, if I then hand this XAML to a visual designer, I prefer just to ask the designer to use certain names for certain parts of the user interface. I don't want to have to tell them to put function names in as attribute values to refer to bits of my code that they're not going to want to look at. So for that reason I slightly prefer hooking up handlers in the code. \par
 On the other hand, Visual Studio and Blend will both put handler hookup into the XAML as attributes. So if you want help from the design tools then that attribute based approach actually works better. So each approach has pros and cons. \par
 Anyway, let's run this. Now, since I'm printing out debug messages each time the event handler is run you should see the results appearing here in the output window. So as I move the mouse into the client area of the window we get a debug message on the right there showing that the mouse enter event had been raised. As I move it inside of the border we get another message saying that the border has raised a mouse enter. If I move it into the stack panel here I get one from the stack panel. If I move into the ellipse we get one from the ellipse. And if I move it into the rectangle we get it from the rectangle. And if I move back out and back in I get another event, out and in, out and in. If I move it further out so if I leave the stack panel and then go back in I'll get a pair of events. If I move out of the border as well I'll get one, two, three events. If I move it all the way out of the window I get one, two, three, four. Now, notice these events are not bubbling. \par
+------------------------------------------------------------------------------------------------------------\par
+Output from debugger:\par
+\cf1\f1\fs19 MouseEnter: EventRoutingExample.MainWindow\par
+MouseEnter: System.Windows.Controls.Border\par
+MouseEnter: System.Windows.Controls.StackPanel\par
+MouseEnter: System.Windows.Shapes.Ellipse\par
+MouseEnter: System.Windows.Shapes.Rectangle\par
+MouseEnter: System.Windows.Shapes.Rectangle\par
+MouseEnter: System.Windows.Shapes.Rectangle\par
+\lang1033\f2 ----------------------------------------------------------------------------\cf0\lang9\f0\fs22\par
+\pard\sa200\sl240\slmult1 If I caused the rectangle one to be raised one more time I just get an event from the rectangle. \par
+But if I click you can see that I actually got four events in quick succession. \par
+--------------------------------------------------------------------------------------------------------\par
+\cf1\f1\fs19 MouseEnter: EventRoutingExample.MainWindow\par
+MouseEnter: System.Windows.Controls.Border\par
+MouseEnter: System.Windows.Controls.StackPanel\par
+MouseEnter: System.Windows.Shapes.Rectangle\par
+MouseDown: System.Windows.Shapes.Rectangle\par
+MouseDown: System.Windows.Controls.StackPanel\par
+MouseDown: System.Windows.Controls.Border\par
+MouseDown: EventRoutingExample.MainWindow\par
+\lang1033\f2 ---------------------------------------------------------------------------\par
+\cf0\lang9\f0\fs22 So the rectangle raised an event, and then that event bubbled up into the stack panel and then bubbled up into the border, and that then bubbled up into the window. \par
+If I don't want that I can turn this off. I can go back into the code. Let me stop debugging here. And I can go into the mouse down and I can set the event args objects handled property to be true. \par
+\pard\sa200\sl240\slmult1 ******************************************************************************\par
+private void MouseDownHandler(object sender, MouseButtonEventArgs e)\par
+\{\par
+\tab Debug.WriteLine($"MouseDown: \{sender\}");\par
+\tab e.Handled = true;\par
+\}\par
+******************************************************************************\par
 \par
 \par
 }
