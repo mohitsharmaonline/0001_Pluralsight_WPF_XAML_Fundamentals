@@ -12,9 +12,11 @@
         BorderThickness="5"
         Padding="15"
         CornerRadius="12"
-        x:Name="myBorder">
+        x:Name="myBorder"
+        Background="Transparent">
         <StackPanel
-            x:Name="myPanel">
+            x:Name="myPanel"
+            Background="Transparent">
             <Ellipse
                 x:Name="myEllipse"
                 Margin="3"

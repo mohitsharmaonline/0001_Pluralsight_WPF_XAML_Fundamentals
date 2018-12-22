@@ -31612,6 +31612,37 @@ MouseDown: EventRoutingExample.MainWindow\par
 ---------------------------------------------------------------------------------------------------------\par
 And if I want to click on the border I have to go right over this outline. If I don't click on the outline I don't get to be in the border anymore. And if you look closely at the mouse enter event, as I go over the border I get an enter event for the border, but I get it if I approach from the other side as well. If I approach from the inside I get another mouse enter event for the border, approaching from either side. It's like the interior of the border and the exterior of the border are essentially the same thing as far as wpf is concerned. And things get weirder if I move the mouse into the rectangle here. There I got mouse enter events from the rectangle and the stack panel and the border all at once. \par
 What on earth is going on here? Well, the first thing to understand is this. Because I've not specified a background for the border, and I've not specified one for the stack panel either, the space you see here is white space. This is actually the window I'm looking at. The border has become completely hollow, and the stack panel has become altogether invisible. \par
+\pard\sa200\sl240\slmult1 So what we're looking at here, this white background, that is the window. So when the mouse is over this region here wpf considers me not to be in the border at all. It's only when I move over an area that the border is painted that I get the enter border event. So if I click here, it's the window I'm clicking on, whereas if I click on the outline it's the border I'm clicking on. And the stack panel paints nothing at all, so there is no way of clicking directly on the stack panel. Now, the weird behavior of the mouse enter, why do I get three events all of a sudden? Well, now that I'm over the rectangle, wpf goes, ah, the rectangle is a child of the stack panel, and I haven't previously told the application that the mouse was inside the stack panel. So it's probably going to get confused if I don't raise a mouse enter event. Because now logically the thing in the visual tree that the mouse is over is a child of the stack panel. So I better say we are nominally inside of the stack panel. And it's done the same thing for the border. So if you have elements which are in the tree that are essentially invisible, you end up getting their mouse enter events when the mouse enters one of their children. So it's all a little bit odd. So the mouse enter event behavior becomes a bit surprising, and the mouse click behavior means we click straight through this hole. \par
+Now, actually if you want to work around this you can. If I put the borders back but I don't want to have them painted in like this, if I don't want to have that pale blue background, I can specify transparent instead. And rather than having this navy background I can specify transparent there as well. \par
+*******************************************************************************\par
+<Border \par
+\tab Margin="15"\par
+\tab BorderBrush="Blue"\par
+\tab BorderThickness="5"\par
+\tab Padding="15"\par
+\tab CornerRadius="12"\par
+\tab x:Name="myBorder"\par
+\tab Background="Transparent">\par
+\tab <StackPanel\par
+\tab\tab x:Name="myPanel"\par
+\tab\tab Background="Transparent">\par
+\tab\tab <Ellipse\par
+\tab\tab\tab x:Name="myEllipse"\par
+\tab\tab\tab Margin="3"\par
+\tab\tab\tab Fill="Green"\par
+\tab\tab\tab Height="40"/>\par
+\tab\tab <Rectangle\par
+\tab\tab\tab x:Name="myRectangle"\par
+\tab\tab\tab Margin="3"\par
+\tab\tab\tab Fill="Cyan"\par
+\tab\tab\tab Height="40"                \par
+\tab\tab\tab RadiusX="10"\par
+\tab\tab\tab RadiusY="10"/>            \par
+\tab </StackPanel>\par
+</Border>\par
+*******************************************************************************\par
+So now it will look exactly the same as before but the behavior will be slightly different. Let me run this again. So now we've got the thing looking the same as it did without the borders present, but now if I click on this area you can see it's the stack panel that is receiving the event. So as far as event handling in wpf is concerned the significant thing is whether you've attempted to paint anything. It doesn't really make a distinction between completely opaque colors, semi-transparent colors or completely transparent colors. It says if you've got a background brush I consider the background of this thing to be opaque to the mouse, it's visible to the mouse. And if you don't set a background brush at all then it's invisible to the mouse. The exact appearance of the brush is not really relevant for this testing. It's simply the question of whether it's present at all. \par
+\pard\sa200\sl240\slmult1\par
 \par
 }
  
