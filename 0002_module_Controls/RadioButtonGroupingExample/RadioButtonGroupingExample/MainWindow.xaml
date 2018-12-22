@@ -1,0 +1,28 @@
+﻿<Window x:Class="RadioButtonGroupingExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RadioButtonGroupingExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <GroupBox Header="Left" Margin="10">
+                <StackPanel>
+                    <RadioButton Content="Small"/>
+                    <RadioButton Content="Medium"/>
+                    <RadioButton Content="large" IsChecked="True"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="Right" Margin="10">
+                <StackPanel>
+                    <RadioButton Content="this"/>
+                    <RadioButton Content="That" IsChecked="True"/>
+                    <RadioButton Content="The Other"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</Window>
