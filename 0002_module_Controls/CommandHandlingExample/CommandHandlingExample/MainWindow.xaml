@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommandHandlingExample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="300" Width="300">
     <Grid>
-        
+        <Button
+            Height="23"
+            HorizontalAlignment="Left"
+            Margin="22,21,0,0"
+            Name="btnCopy"
+            VerticalAlignment="Top"
+            Width="75"
+            Command="ApplicationCommands.Copy">
+            _Copy
+        </Button>
+
+        <Button
+            Height="23"
+            HorizontalAlignment="Left"
+            Margin="22,61,0,0"
+            Name="btnPaste"
+            VerticalAlignment="Top"
+            Width="75"
+            Command="ApplicationCommands.Paste">
+            _Paste
+        </Button>
     </Grid>
 </Window>
