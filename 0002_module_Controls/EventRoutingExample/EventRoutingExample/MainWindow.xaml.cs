@@ -52,7 +52,7 @@ namespace EventRoutingExample
 
         private void btn_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
+            Button btn = (Button)e.Source;
             btn.Background = Brushes.Green;
         }
 
