@@ -37,6 +37,21 @@ namespace EventRoutingExample
             myEllipse.MouseDown += MouseDownHandler;
             myRectangle.MouseDown += MouseDownHandler;
 
+            for(int i = 1; i <= 5; ++i)
+            {
+                Button btn = new Button();
+                btn.Content = "Button " + i;
+                myPanel.Children.Add(btn);
+
+                btn.Click += btn_Click;
+            }
+
+        }
+
+        private void btn_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.Background = Brushes.Green;
         }
 
         private void MouseDownHandler(object sender, MouseButtonEventArgs e)
