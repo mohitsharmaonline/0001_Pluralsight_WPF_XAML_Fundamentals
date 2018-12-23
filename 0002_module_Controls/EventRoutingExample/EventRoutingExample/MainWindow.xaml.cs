@@ -46,7 +46,7 @@ namespace EventRoutingExample
                 //btn.Click += btn_Click;
             }
 
-            myPanel.Click
+            myPanel.AddHandler(routedEvent: Button.ClickEvent, handler: new RoutedEventHandler(btn_Click));
 
         }
 

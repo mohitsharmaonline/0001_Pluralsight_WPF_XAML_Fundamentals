@@ -43950,6 +43950,38 @@ public MainWindow()\par
 ***************************************************************************\par
 Stack panel doesn't define a click event. So there are standard mouse events for mouse button up and mouse button down, but click is actually a slightly higher level concept. Click is this button has been pressed and released, or the user has hit the keyboard shortcut for this button, or they've hit the spacebar while the button had the focus. So click doesn't really necessarily correspond directly to mouse event. And that's why not all elements have this. For a panel there's no real concept of the click. You've just got mouse up and mouse down and that's it. So how can we do this? How can we handle the click event at the panel level? We know the event is going to pass through the panel because it's a bubbling event. That's what events do. But how on earth do I attach a handler? \par
 \par
+Well, it's actually pretty similar to the way I deal with attached properties. Events can be attached in just the same way that properties can. So it looks like this. \par
+*****************************************************************************\par
+public MainWindow()\par
+\{\par
+\tab InitializeComponent();\par
+\par
+\tab this.MouseEnter += MouseEnterHandler;\par
+\tab myBorder.MouseEnter += MouseEnterHandler;\par
+\tab myPanel.MouseEnter += MouseEnterHandler;\par
+\tab myEllipse.MouseEnter += MouseEnterHandler;\par
+\tab myRectangle.MouseEnter += MouseEnterHandler;\par
+\par
+\tab this.MouseDown += MouseDownHandler;\par
+\tab myBorder.MouseDown += MouseDownHandler;\par
+\tab myPanel.MouseDown += MouseDownHandler;\par
+\tab myEllipse.MouseDown += MouseDownHandler;\par
+\tab myRectangle.MouseDown += MouseDownHandler;\par
+\par
+\tab for(int i = 1; i <= 5; ++i)\par
+\tab\{\par
+\tab\tab Button btn = new Button();\par
+\tab\tab btn.Content = "Button " + i;\par
+\tab\tab myPanel.Children.Add(btn);\par
+\par
+\tab\tab //btn.Click += btn_Click;\par
+\tab\}\par
+\par
+\tab myPanel.AddHandler(routedEvent: Button.ClickEvent, handler: new RoutedEventHandler(btn_Click));\par
+\par
+\}\par
+**************************************************************************\par
+I can say my panel dot add handler, and I specify which event I'm interested in, button dot click event. And then a new event handler of the appropriate type pointing at the click handler. So the syntax is somewhat different from the way that routed that attached properties work. But the concept is exactly the same. Just as I can attach properties defined by other classes to target elements, I can also attach handlers for events defined by other classes to arbitrary elements in the tree. And, in fact, for events that arguably makes more sense because we know that events bubble their way up the entire tree, and that means that a container like a panel is going to see events that were defined from completely other elements all the time. That's going to be just normal.\par
 \par
 }
  
