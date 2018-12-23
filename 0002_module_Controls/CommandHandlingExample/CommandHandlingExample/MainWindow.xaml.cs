@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,17 @@ namespace CommandHandlingExample
         public MainWindow()
         {
             InitializeComponent();
+
+            CommandBinding copyCommand = new CommandBinding(command: ApplicationCommands.Copy);
+
+            this.CommandBindings.Add(copyCommand);
+
+            copyCommand.Executed += new ExecutedRoutedEventHandler(CopyCommand_Executed);
+        }
+
+        private void CopyCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Debug.WriteLine("Copy Executed.");
         }
     }
 }
