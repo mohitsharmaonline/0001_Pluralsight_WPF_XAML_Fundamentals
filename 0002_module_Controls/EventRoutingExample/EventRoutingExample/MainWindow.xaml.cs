@@ -43,8 +43,10 @@ namespace EventRoutingExample
                 btn.Content = "Button " + i;
                 myPanel.Children.Add(btn);
 
-                btn.Click += btn_Click;
+                //btn.Click += btn_Click;
             }
+
+            myPanel.Click
 
         }
 
