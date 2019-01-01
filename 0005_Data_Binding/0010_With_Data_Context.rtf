@@ -37001,6 +37001,28 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0000030000000000
 This is a slightly unhelpful name because the word inheritance already has a pretty well-established meaning in the world of object or into programming and WPF uses the word to mean something completely different here. An inherited property works like an \b Ambient property\b0  in Windows forms, if you know those. \par
 Inherited properties flow down to their children. So by setting the data context on this grid, I'm implicitly setting the data context on all of its descendants. So all three TextBlocks inherit their data context from the grid and that data context then becomes the implicit source of the bindings, so these bindings only need to specify their path. \par
 There's a mild surprise on this slide. The binding expressions don't have a path equals in them unlike the early ones I've shown you. They just say Binding Platform, Binding Version and so on. How come I was able to leave out the property name? Well, obviously it helps that PowerPoint is the world's most forgiving execution environment, but it turns out that you are actually allowed to do this. Remember, that markup extensions allow you to specify both property values and constructor arguments. And since I've not specified a property name here, XAML interprets these as constructor arguments. And since the binding class is happy to let you set the path either via the constructor or via the path, you get to do it either way. You might prefer this syntax because it's more compact or you might prefer to say path explicitly because you prefer your code to be clear about what it's doing. Neither one is better than the other so pick whichever you prefer to look of. \par
+Person.cs\par
+*****************************************************************************\par
+namespace BindingExample\par
+\{\par
+    public class Person\par
+    \{\par
+        private string _name;\par
+        public string Name\par
+        \{\par
+            get => _name;\par
+            set => _name = value;\par
+        \}\par
+\par
+        private double _age;\par
+        public double Age\par
+        \{\par
+            get => _age;\par
+            set => _age = value;\par
+        \}\par
+    \}\par
+\}\par
+*************************************************************************\par
 \par
 }
  

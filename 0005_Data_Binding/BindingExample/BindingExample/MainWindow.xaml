@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock 
+            Grid.Row="0"
+            Grid.Column="0">
+            Name:
+        </TextBlock>
+        <TextBlock 
+            Grid.Row="1"
+            Grid.Column="0">
+            Age:
+        </TextBlock>
     </Grid>
 </Window>
