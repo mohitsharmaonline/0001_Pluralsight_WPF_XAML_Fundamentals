@@ -52,5 +52,24 @@
             </Grid>
         </DataTemplate>
     </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1">
+            <Button 
+                Content="_Show..."
+                Click="Button_Click"/>
+            
+            
+            
+            <Button
+                Content="_Age..."
+                Click="Button_Click_1"/>
+        </StackPanel>
+    </Grid>
     
 </Window>
