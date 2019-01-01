@@ -40,7 +40,7 @@ namespace BindingExample
         {
             src.Age += 0.1;
 
-            AgeTextbox.GetBindingExpression(dp: TextBox.TextProperty).UpdateTarget();
+            //AgeTextbox.GetBindingExpression(dp: TextBox.TextProperty).UpdateTarget();
         }
     }
 }

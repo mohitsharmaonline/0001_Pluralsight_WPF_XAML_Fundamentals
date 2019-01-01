@@ -1,7 +1,9 @@
 ﻿
+using System.ComponentModel;
+
 namespace BindingExample
 {
-    public class Person
+    public class Person : INotifyPropertyChanged
     {
         private string _name;
         public string Name
@@ -11,10 +13,28 @@ namespace BindingExample
         }
 
         private double _age;
+
         public double Age
         {
             get => _age;
-            set => _age = value;
+            set
+            {
+                if(value != _age)
+                {
+                    _age = value;
+                    OnPropertyChanged(nameof(Age));
+                }
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            if(PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
