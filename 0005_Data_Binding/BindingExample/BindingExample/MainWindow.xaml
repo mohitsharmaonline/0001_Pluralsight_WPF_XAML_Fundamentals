@@ -59,13 +59,14 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Any content Control will do to hold
+            Data Template-->
+        <Button Content="{Binding}"/>
+        
         <StackPanel Grid.Row="1">
             <Button 
                 Content="_Show..."
                 Click="Button_Click"/>
-            
-            
-            
             <Button
                 Content="_Age..."
                 Click="Button_Click_1"/>
