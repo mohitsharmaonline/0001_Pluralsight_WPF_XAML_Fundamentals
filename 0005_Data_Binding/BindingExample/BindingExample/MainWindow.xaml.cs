@@ -39,6 +39,8 @@ namespace BindingExample
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             src.Age += 0.1;
+
+            AgeTextbox.GetBindingExpression(dp: TextBox.TextProperty).UpdateTarget();
         }
     }
 }
