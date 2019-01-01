@@ -29,7 +29,8 @@
             Name="NameTextbox"
             Grid.Row="0"
             Grid.Column="1"
-            Margin="2"/>
+            Margin="2"
+            Text="{Binding Name}"/>
 
         <Label 
             Name="AgeLabel"
@@ -43,6 +44,7 @@
             Name="AgeTextbox"
             Grid.Row="1"
             Grid.Column="1"
-            Margin="2"/>
+            Margin="2"
+            Text="{Binding Age}"/>
     </Grid>
 </Window>
