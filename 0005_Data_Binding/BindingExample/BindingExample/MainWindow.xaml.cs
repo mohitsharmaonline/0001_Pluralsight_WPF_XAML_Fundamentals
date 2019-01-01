@@ -29,5 +29,11 @@ namespace BindingExample
             // in constrictor put datasource inside the datacontext of the window.
             this.DataContext = src;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string message = src.Name + " is " + src.Age;
+            MessageBox.Show(message);
+        }
     }
 }

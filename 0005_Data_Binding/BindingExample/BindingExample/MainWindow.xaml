@@ -46,5 +46,11 @@
             Grid.Column="1"
             Margin="2"
             Text="{Binding Age}"/>
+
+        <StackPanel 
+            Grid.Row="2"
+            Grid.ColumnSpan="2">
+            <Button Content="_Show..." Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
