@@ -61,7 +61,7 @@
 
         <!-- Any content Control will do to hold
             Data Template-->
-        <Button Content="{Binding}"/>
+        <ContentControl Content="{Binding}"/>
         
         <StackPanel Grid.Row="1">
             <Button 
