@@ -35,5 +35,10 @@ namespace BindingExample
             string message = src.Name + " is " + src.Age;
             MessageBox.Show(message);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            src.Age += 0.1;
+        }
     }
 }

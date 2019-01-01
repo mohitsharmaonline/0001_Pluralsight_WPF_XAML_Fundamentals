@@ -45,12 +45,14 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="2"
-            Text="{Binding Age}"/>
+            Text="{Binding Age,
+            UpdateSourceTrigger=PropertyChanged}"/>
 
         <StackPanel 
             Grid.Row="2"
             Grid.ColumnSpan="2">
             <Button Content="_Show..." Click="Button_Click"/>
+            <Button Content="_Age..." Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
 </Window>
