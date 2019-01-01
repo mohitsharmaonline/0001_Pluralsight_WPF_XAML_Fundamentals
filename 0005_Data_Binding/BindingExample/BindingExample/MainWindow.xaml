@@ -6,53 +6,51 @@
         xmlns:local="clr-namespace:BindingExample"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+    <Window.Resources>
+        <DataTemplate 
+            DataType="{x:Type local:Person}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-        <Label 
+                <Label 
             Name="NameLabel"
             Grid.Row="0"
             Grid.Column="0"
             Margin="2"
             Target="{Binding ElementName=NameTextbox}">
-            Name:
-        </Label>
-        <TextBox
+                    Name:
+                </Label>
+                <TextBox
             Name="NameTextbox"
             Grid.Row="0"
             Grid.Column="1"
             Margin="2"
             Text="{Binding Name}"/>
 
-        <Label 
+                <Label 
             Name="AgeLabel"
             Grid.Row="1"
             Grid.Column="0"
             Margin="2"
             Target="{Binding ElementName=AgeTextbox}">
-            Age:
-        </Label>
-        <TextBox
+                    Age:
+                </Label>
+                <TextBox
             Name="AgeTextbox"
             Grid.Row="1"
             Grid.Column="1"
             Margin="2"
             Text="{Binding Age,
-            UpdateSourceTrigger=PropertyChanged}"/>
-
-        <StackPanel 
-            Grid.Row="2"
-            Grid.ColumnSpan="2">
-            <Button Content="_Show..." Click="Button_Click"/>
-            <Button Content="_Age..." Click="Button_Click_1"/>
-        </StackPanel>
-    </Grid>
+            UpdateSourceTrigger=PropertyChanged}"/>                
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    
 </Window>
