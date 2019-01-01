@@ -20,9 +20,14 @@ namespace BindingExample
     /// </summary>
     public partial class MainWindow : Window
     {
+        // instance of object that will serve as datasource
+        Person src = new Person { Name = "Ian", Age = 34.6 };
         public MainWindow()
         {
             InitializeComponent();
+
+            // in constrictor put datasource inside the datacontext of the window.
+            this.DataContext = src;
         }
     }
 }
