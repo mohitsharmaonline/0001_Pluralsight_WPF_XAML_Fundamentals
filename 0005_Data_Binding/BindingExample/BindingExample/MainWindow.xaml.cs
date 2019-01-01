@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BindingExample
 {
@@ -22,12 +10,18 @@ namespace BindingExample
     {
         // instance of object that will serve as datasource
         Person src = new Person { Name = "Ian", Age = 34.6 };
+        List<Person> people = new List<Person>();
+
         public MainWindow()
         {
             InitializeComponent();
 
+            people.Add(src);
+            people.Add(new Person { Name = "Mike", Age = 62.5 });
+            people.Add(new Person { Name = "Brian", Age = 3.5 });
+
             // in constrictor put datasource inside the datacontext of the window.
-            this.DataContext = src;
+            this.DataContext = people;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
