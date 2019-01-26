@@ -50,6 +50,14 @@
             Text="{Binding Age,
             UpdateSourceTrigger=PropertyChanged}"/>                
             </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Age}" Value="21">
+                    <Setter 
+                        TargetName="AgeLabel"
+                        Property="Background"
+                        Value="Red"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
         </DataTemplate>
     </Window.Resources>
 

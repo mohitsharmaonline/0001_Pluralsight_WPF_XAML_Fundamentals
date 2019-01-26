@@ -1,4 +1,4 @@
-{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl240\slmult1\lang9\f0\fs22{\pict\wmetafile8\picw15240\pich9287\picwgoal8640\pichgoal5265 
 01000900000340a7070000002aa707000000050000000b0200000000050000000c024724883b2a
 a70700430f2000cc000000c301e502000000004724883b0000000028000000e5020000c3010000
@@ -26807,8 +26807,65 @@ b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6b1dcf6
 b1dcf6b1dcf6b1dcf5b1dcf4afdbf1b3dff3b4e1f36e9bacb0ddefb3e0f1b4e1f1b7e5f4bce9f8
 0000030000000000
 }\par
-This example uses a DataTrigger that watches the source object's alert property. And if that property becomes true, the trigger will change the appearance of the template. The trigger contains a setter which targets the element named valueText. It will change that element's foreground property to red whenever the trigger is applied. In short, when using this template, any object whose alert property is true will have a red background. \par
-I've modified the template from my Person example to watch for lies about my age. I've added a trigger section and this data trigger is watching the age property of the person. And if your age ever becomes 21, this setter will change the background of the ageLabel to be red. So let's run this. So now if I type in 21, it lights up red. Obviously, this is a bit feeble 'cause I can just lie more audaciously and it circumvents the check. Triggers are pretty basic. They can only check for constant values and they don't offer any kind of expression language to do more complex checks. But as we'll see later, that's not actually a problem. I will be able to fix this later once I've introduced another part of the binding system called value converters. Now, you may recognize this trigger section from the graphics talk where we used it to add animations, and you can do just that with a data template. So data templates, so let's add trigger animations based not just on user interactions but also on changes to the data. So I can modify this trigger through an animation when the age goes bad rather than just setting this property. So if I comment out that setter, I'm going to add to this data trigger, I'm going to add a EnterActions property and in here is a collection of things I'd like to have happened when this trigger becomes active. So I can begin a story board here just like I did in the animation section of the graphics talk. So let's have a Storyboard which will contain a single animation, a ColorAnimation in this case, and this is going to target the ageLabel and the TargetProperty is going to be the labels background and I happen to know it's going to be a solid color brush in there. So that'll be SolidColorBrush. Color. That's the actual target of the animation. And then we'll animate it to red over a duration of half a second, let's just make it 1 second so we can see it going more slowly. So let's run this. So now I will set my age to 21. The background of the age slowly fades up to red rather than jumping straight back down. And of course, I can add a second animation on the predictably named ExitActions. So if I say DataTrigger. ExitActions, I can use more or less the same content so I could paste this in. And I want to animate back to its original value. But I can actually do that by just leaving off the to and the from. If I have an animation which specifies neither a start value nor an end value, it animates from the current value back down to its so-called base value. See, one of the things about the property system in WPF is that it considers animated values to be transient. The underlying value, the so-called base value, never goes away, it just gets temporarily overwritten by the animation. And that's why animation of this form is able to animate back down to the base value because that base value is always there under the covers. So let's run this. If I put in 21, it fades to red and if I put it back how it was, it fades back down again. By the way, you're also free to use ordinary event triggers in a data template. So if you want a template to launch animations based on input events such as mouse enter and leave, you can do that too.\par
+This example uses a DataTrigger that watches the source object's 'Alert' property. And if that property becomes true, the trigger will change the appearance of the template. The trigger contains a Setter which targets the element named valueText. It will change that element's foreground property to red whenever the trigger is applied. In short, when using this template, any object whose alert property is true will have a red background. \par
+*****************************************************************************\par
+<Window.Resources>\par
+\tab <DataTemplate \par
+\tab\tab DataType="\{x:Type local:Person\}">\par
+\tab\tab <Grid>\par
+\tab\tab\tab <Grid.RowDefinitions>\par
+\tab\tab\tab\tab <RowDefinition Height="Auto"/>\par
+\tab\tab\tab\tab <RowDefinition Height="Auto"/>\par
+\tab\tab\tab </Grid.RowDefinitions>\par
+\tab\tab\tab <Grid.ColumnDefinitions>\par
+\tab\tab\tab\tab <ColumnDefinition Width="Auto"/>\par
+\tab\tab\tab\tab <ColumnDefinition Width="*"/>\par
+\tab\tab\tab </Grid.ColumnDefinitions>\par
+\par
+\tab\tab\tab <Label \par
+\tab\tab Name="NameLabel"\par
+\tab\tab Grid.Row="0"\par
+\tab\tab Grid.Column="0"\par
+\tab\tab Margin="2"\par
+\tab\tab Target="\{Binding ElementName=NameTextbox\}">\par
+\tab\tab\tab\tab Name:\par
+\tab\tab\tab </Label>\par
+\tab\tab\tab <TextBox\par
+\tab\tab Name="NameTextbox"\par
+\tab\tab Grid.Row="0"\par
+\tab\tab Grid.Column="1"\par
+\tab\tab Margin="2"\par
+\tab\tab Text="\{Binding Name\}"/>\par
+\par
+\tab\tab\tab <Label \par
+\tab\tab Name="AgeLabel"\par
+\tab\tab Grid.Row="1"\par
+\tab\tab Grid.Column="0"\par
+\tab\tab Margin="2"\par
+\tab\tab Target="\{Binding ElementName=AgeTextbox\}">\par
+\tab\tab\tab\tab Age:\par
+\tab\tab\tab </Label>\par
+\tab\tab\tab <TextBox\par
+\tab\tab Name="AgeTextbox"\par
+\tab\tab Grid.Row="1"\par
+\tab\tab Grid.Column="1"\par
+\tab\tab Margin="2"\par
+\tab\tab Text="\{Binding Age,\par
+\tab\tab UpdateSourceTrigger=PropertyChanged\}"/>                \par
+\tab\tab </Grid>\par
+\tab\tab\b <DataTemplate.Triggers>\par
+\tab\tab\tab <DataTrigger Binding="\{Binding Age\}" Value="21">\par
+\tab\tab\tab\tab <Setter \par
+\tab\tab\tab\tab\tab TargetName="AgeLabel"\par
+\tab\tab\tab\tab\tab Property="Background"\par
+\tab\tab\tab\tab\tab Value="Red"/>\par
+\tab\tab\tab </DataTrigger>\par
+\tab\tab </DataTemplate.Triggers>\b0\par
+\tab </DataTemplate>\par
+</Window.Resources>\par
+****************************************************************************\par
+I've modified the template from my Person example to watch for lies about my age. I've added a trigger section and this data trigger is watching the age property of the person. And if your age ever becomes 21, this setter will change the background of the ageLabel to be red. \par
+So let's run this. So now if I type in 21, it lights up red. Obviously, this is a bit feeble 'cause I can just lie more audaciously and it circumvents the check. Triggers are pretty basic. They can only check for constant values and they don't offer any kind of expression language to do more complex checks. But as we'll see later, that's not actually a problem. I will be able to fix this later once I've introduced another part of the binding system called value converters. Now, you may recognize this trigger section from the graphics talk where we used it to add animations, and you can do just that with a data template. So data templates, so let's add trigger animations based not just on user interactions but also on changes to the data. So I can modify this trigger through an animation when the age goes bad rather than just setting this property. So if I comment out that setter, I'm going to add to this data trigger, I'm going to add a EnterActions property and in here is a collection of things I'd like to have happened when this trigger becomes active. So I can begin a story board here just like I did in the animation section of the graphics talk. So let's have a Storyboard which will contain a single animation, a ColorAnimation in this case, and this is going to target the ageLabel and the TargetProperty is going to be the labels background and I happen to know it's going to be a solid color brush in there. So that'll be SolidColorBrush. Color. That's the actual target of the animation. And then we'll animate it to red over a duration of half a second, let's just make it 1 second so we can see it going more slowly. So let's run this. So now I will set my age to 21. The background of the age slowly fades up to red rather than jumping straight back down. And of course, I can add a second animation on the predictably named ExitActions. So if I say DataTrigger. ExitActions, I can use more or less the same content so I could paste this in. And I want to animate back to its original value. But I can actually do that by just leaving off the to and the from. If I have an animation which specifies neither a start value nor an end value, it animates from the current value back down to its so-called base value. See, one of the things about the property system in WPF is that it considers animated values to be transient. The underlying value, the so-called base value, never goes away, it just gets temporarily overwritten by the animation. And that's why animation of this form is able to animate back down to the base value because that base value is always there under the covers. So let's run this. If I put in 21, it fades to red and if I put it back how it was, it fades back down again. By the way, you're also free to use ordinary event triggers in a data template. So if you want a template to launch animations based on input events such as mouse enter and leave, you can do that too.\par
 \pard\sa200\sl276\slmult1\par
 }
  
