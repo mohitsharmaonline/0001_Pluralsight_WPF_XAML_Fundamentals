@@ -61,7 +61,7 @@
 
         <!-- Any content Control will do to hold
             Data Template-->
-        <ContentControl Content="{Binding}"/>
+        <ListBox ItemsSource="{Binding}"/>
         
         <StackPanel Grid.Row="1">
             <Button 
