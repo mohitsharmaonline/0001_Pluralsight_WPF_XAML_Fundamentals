@@ -1,4 +1,4 @@
-{\rtf1\ansi\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
 {\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl240\slmult1\lang9\f0\fs22{\pict\wmetafile8\picw15240\pich5450\picwgoal8640\pichgoal3090 
 010009000003ac4204000000964204000000050000000b0200000000050000000c024a15883b96
 420400430f2000cc0000000201d102000000004a15883b0000000028000000d102000002010000
@@ -14320,9 +14320,9 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffff00030000000000
 }\par
-\pard\sa200\sl276\slmult1 A data binding has a target, a property on some FrameworkElement. \par
+\pard\sa200\sl276\slmult1 A data binding has a Target, a property on some FrameworkElement. \par
 So, while the source for binding can be any object you like or even XML, the target has to be an object in your user interface. And you set up a binding by using this syntax here. We've seen this user attributes with curly brackets before, but just to recap, that syntax indicates that we're not setting the property to a literal value, instead we're using a \b markup extension\b0 .\par
- So the name inside the braces, \b Binding\b0 , is the name of a \b class \b0 that derives from the \b MarkupExtension\b0  base class. This can then be followed by a mix of constructor arguments and property values. Here, we're setting the binding objects path property to a value of property. \par
+ So the name inside the braces, \b Binding\b0 , is the name of a \b class \b0 that derives from the \b MarkupExtension\b0  base class. This can then be followed by a mix of constructor arguments and property values. Here, we're setting the \b Binding\b0  objects \b Path\b0  property to a value of property. \par
 So at runtime, this XAML causes a binding object to be created and initialized and this binding object will then be in charge of the text property's value. The object that \b owns \b0 the target property, \b TextBox \b0 in this case, can be any \b FrameworkElement\b0 . There are also a few other supported types. \par
 \pard\sa200\sl240\slmult1{\pict\wmetafile8\picw10266\pich2249\picwgoal5820\pichgoal1275 
 01000900000376c10000000060c100000000050000000b0200000000050000000c02c9081a2860
@@ -16866,7 +16866,7 @@ ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
 ffffffffffffffffffffffffffffffffffffffffffffffffff030000000000
 }\par
-\pard\sa200\sl276\slmult1 For example, you can bind to framework content elements, that's the base class of types in the text object model that we've not examined yet. And WPF also knows how to bind to the certain types that are not framework elements themselves but which can be associated with them. For example, you can make a brush object the target of a binding. Brush doesn't derive from FrameworkElement, but as long as the brush is the value of a property of some FrameworkElement, that's good enough for WPF. \par
+\pard\sa200\sl276\slmult1 For example, you can bind to framework content elements, that's the base class of types in the text object model that we've not examined yet. And WPF also knows how to bind to the certain types that are not framework elements themselves but which can be associated with them. For example, you can make a \b Brush\b0  object the target of a binding. Brush doesn't derive from FrameworkElement, but as long as the brush is the value of a property of some FrameworkElement, that's good enough for WPF. \par
 So in general, a FrameworkElement or a framework content element has to be involved even if it's not the direct target itself. This is partly because data binding is a framework service but it's also necessary because binding takes into account some of the context of the visual tree. \par
 \pard\sa200\sl240\slmult1{\pict\wmetafile8\picw10795\pich2858\picwgoal6120\pichgoal1620 
 010009000003680201000000520201000000050000000b0200000000050000000c022a0b2b2a52
