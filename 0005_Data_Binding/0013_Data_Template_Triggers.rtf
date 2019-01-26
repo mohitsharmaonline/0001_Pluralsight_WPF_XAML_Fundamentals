@@ -36265,7 +36265,43 @@ So if I comment out that setter, I'm going to add to this data trigger, I'm goin
 \tab </DataTrigger>\par
 </DataTemplate.Triggers>\par
 ***************************************************************************\par
-So let's run this. So now I will set my age to 21. The background of the age slowly fades up to red rather than jumping straight back down. And of course, I can add a second animation on the predictably named ExitActions. So if I say DataTrigger. ExitActions, I can use more or less the same content so I could paste this in. And I want to animate back to its original value. But I can actually do that by just leaving off the to and the from. If I have an animation which specifies neither a start value nor an end value, it animates from the current value back down to its so-called base value. See, one of the things about the property system in WPF is that it considers animated values to be transient. The underlying value, the so-called base value, never goes away, it just gets temporarily overwritten by the animation. And that's why animation of this form is able to animate back down to the base value because that base value is always there under the covers. So let's run this. If I put in 21, it fades to red and if I put it back how it was, it fades back down again. By the way, you're also free to use ordinary event triggers in a data template. So if you want a template to launch animations based on input events such as mouse enter and leave, you can do that too.\par
-\pard\sa200\sl276\slmult1\par
+So let's run this. So now I will set my age to 21. The background of the age slowly fades up to red rather than jumping straight back down. \par
+And of course, I can add a second animation on the predictably named ExitActions. So if I say DataTrigger. ExitActions, I can use more or less the same content so I could paste this in. And I want to animate back to its original value. But I can actually do that by just leaving off the 'To' and the 'From'.\par
+*****************************************************************************\par
+<DataTemplate.Triggers>\par
+\tab <DataTrigger Binding="\{Binding Age\}" Value="21">\par
+\tab\tab <!--<Setter \par
+\tab\tab\tab TargetName="AgeLabel"\par
+\tab\tab\tab Property="Background"\par
+\tab\tab\tab Value="Red"/>-->\par
+\tab\tab <DataTrigger.EnterActions>\par
+\tab\tab\tab <BeginStoryboard>\par
+\tab\tab\tab\tab <Storyboard>\par
+\tab\tab\tab\tab\tab <ColorAnimation \par
+\tab\tab\tab\tab\tab\tab Storyboard.TargetName="AgeLabel"\par
+\tab\tab\tab\tab\tab\tab Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)"\par
+\tab\tab\tab\tab\tab\tab To="Red"\par
+\tab\tab\tab\tab\tab\tab Duration="0:0:1">                                    \par
+\tab\tab\tab\tab\tab </ColorAnimation>\par
+\tab\tab\tab\tab </Storyboard>\par
+\tab\tab\tab </BeginStoryboard>\par
+\tab\tab </DataTrigger.EnterActions>\par
+\tab\tab <DataTrigger.ExitActions>\par
+\tab\tab\tab <BeginStoryboard>\par
+\tab\tab\tab\tab <Storyboard>\par
+\tab\tab\tab\tab\tab <ColorAnimation \par
+\tab\tab\tab\tab\tab\tab Storyboard.TargetName="AgeLabel"\par
+\tab\tab\tab\tab\tab\tab Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)"\par
+\tab\tab\tab\tab\tab\tab Duration="0:0:1">\par
+\tab\tab\tab\tab\tab </ColorAnimation>\par
+\tab\tab\tab\tab </Storyboard>\par
+\tab\tab\tab </BeginStoryboard>\par
+\tab\tab </DataTrigger.ExitActions>\par
+\tab </DataTrigger>\par
+</DataTemplate.Triggers>\par
+**********************************************************************\par
+If I have an animation which specifies neither a start value nor an end value, it animates from the current value back down to its so-called base value. See, one of the things about the property system in WPF is that it considers animated values to be \b transient\b0 . The underlying value, the so-called \b base value\b0 , never goes away, it just gets temporarily overwritten by the animation. And that's why animation of this form is able to animate back down to the base value because that base value is always there under the covers. \par
+So let's run this. If I put in 21, it fades to red and if I put it back how it was, it fades back down again. \par
+By the way, you're also free to use ordinary event triggers in a data template. So if you want a template to launch animations based on input events such as mouse enter and leave, you can do that too.\par
 }
  
