@@ -52,10 +52,22 @@
             </Grid>
             <DataTemplate.Triggers>
                 <DataTrigger Binding="{Binding Age}" Value="21">
-                    <Setter 
+                    <!--<Setter 
                         TargetName="AgeLabel"
                         Property="Background"
-                        Value="Red"/>
+                        Value="Red"/>-->
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation 
+                                    Storyboard.TargetName="AgeLabel"
+                                    Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)"
+                                    To="Red"
+                                    Duration="0:0:1">                                    
+                                </ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
                 </DataTrigger>
             </DataTemplate.Triggers>
         </DataTemplate>
