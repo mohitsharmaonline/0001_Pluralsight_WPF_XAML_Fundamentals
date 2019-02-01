@@ -10,6 +10,23 @@
         <ObjectDataProvider 
             x:Key="src" 
             ObjectType="{x:Type local:PeopleSource}"/>
+
+        <DataTemplate x:Key="PeopleTemplate">
+            <Grid Width="252.677">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.293*"/>
+                    <ColumnDefinition Width="0.707*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Margin="8.001,0,-0.001,0" Grid.Column="1" Grid.Row="0" Text="{Binding Path=Age}"/>
+                <TextBox Margin="8.001,0,-0.001,0" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1" Text="{Binding Path=Name}"/>
+                <Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="_Name:"/>
+                <Label d:LayoutOverrides="GridBox" HorizontalAlignment="Left" VerticalAlignment="Top" Content="_Age:" Grid.Row="1"/>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid DataContext="{StaticResource src}">
@@ -18,7 +35,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ListBox />
+        <ListBox 
+            ItemTemplate="{DynamicResource PeopleTemplate}"
+            ItemsSource="{Binding People}" />
         
         <StackPanel Grid.Row="1">
             <Button 
