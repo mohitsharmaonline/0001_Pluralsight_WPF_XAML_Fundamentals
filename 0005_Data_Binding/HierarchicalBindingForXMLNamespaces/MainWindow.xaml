@@ -12,7 +12,7 @@
                 x:Key="src"
                 XPath="/myDoc/item">
                 <x:XData>
-                    <myDoc xmlns="">
+                    <myDoc xmlns="http://pluralsight.com/ns">
                         <item title="One"/>
                         <item title="Two">
                             <item title="First child"/>
