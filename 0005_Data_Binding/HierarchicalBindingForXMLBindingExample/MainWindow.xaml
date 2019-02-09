@@ -38,7 +38,7 @@
                 <HierarchicalDataTemplate 
                     ItemsSource="{Binding XPath=item}">
                     <TextBlock 
-                        Text="{Binding XPath=@title}"/>
+                        Text="{Binding Path=InnerXml}"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>
