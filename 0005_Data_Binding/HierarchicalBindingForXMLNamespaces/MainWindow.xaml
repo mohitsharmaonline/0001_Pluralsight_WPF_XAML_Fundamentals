@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HierarchicalBindingExample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        xmlns:td="http://pluralsight.com/ns">
     <Grid>
         <Grid.Resources>
             <XmlDataProvider 
                 x:Key="src"
-                XPath="/*[local-name()='myDoc']/*">
+                XPath="/td:myDoc/td:item">
                 <x:XData>
                     <myDoc xmlns="http://pluralsight.com/ns">
                         <item title="One"/>
