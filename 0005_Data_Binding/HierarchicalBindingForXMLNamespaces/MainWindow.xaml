@@ -10,7 +10,7 @@
         <Grid.Resources>
             <XmlDataProvider 
                 x:Key="src"
-                XPath="/myDoc/item">
+                XPath="/*[local-name()='myDoc']/*">
                 <x:XData>
                     <myDoc xmlns="http://pluralsight.com/ns">
                         <item title="One"/>
