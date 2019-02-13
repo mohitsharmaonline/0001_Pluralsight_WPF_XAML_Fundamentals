@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace BindingExample
@@ -10,7 +11,7 @@ namespace BindingExample
     {
         // instance of object that will serve as datasource
         Person src = new Person { Name = "Ian", Age = 34.6 };
-        List<Person> people = new List<Person>();
+        ObservableCollection<Person> people = new ObservableCollection<Person>();
 
         public MainWindow()
         {
