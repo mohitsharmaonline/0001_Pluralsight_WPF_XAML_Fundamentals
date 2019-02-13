@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+        <local:AgeCheckConverter x:Key="ageConv"/>
+
         <DataTemplate 
             DataType="{x:Type local:Person}">
             <Grid>
@@ -51,7 +53,9 @@
             UpdateSourceTrigger=PropertyChanged}"/>                
             </Grid>
             <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Age}" Value="21">
+                <DataTrigger 
+                    Binding="{Binding Age, Converter={StaticResource ageConv}}" 
+                    Value="True">
                     <!--<Setter 
                         TargetName="AgeLabel"
                         Property="Background"
