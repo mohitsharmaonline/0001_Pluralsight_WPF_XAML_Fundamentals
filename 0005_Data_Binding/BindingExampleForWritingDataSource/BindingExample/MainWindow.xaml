@@ -86,8 +86,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Any content Control will do to hold
@@ -101,6 +101,9 @@
             <Button
                 Content="_Age..."
                 Click="Button_Click_1"/>
+            <Button
+                Content="_New..."
+                Click="Button_Click_2"/>
         </StackPanel>
     </Grid>
     

@@ -37,9 +37,10 @@ namespace BindingExample
             //AgeTextbox.GetBindingExpression(dp: TextBox.TextProperty).UpdateTarget();
         }
 
+        int personId = 1;
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-
+            people.Add(new Person { Name = "Person " + (personId++), Age = 0 });
         }
     }
 }
